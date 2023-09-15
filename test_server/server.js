@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
     socket.once('ready', () => {
         console.log(`A new player is connected. [id: ${id}]`);
         socket.emit('user:ready', {
-            message: 'You are connected to the server',
+            message: 'サーバーに接続しました',
             id:id,
         })
     });
@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
         console.log(`A new game is created by ${id}. [code: ${newCode}]`);
 
         socket.emit('game:pending', {
-            message: 'Waiting for the opponent',
+            message: '対戦相手を待っています',
             code: newCode
         });
     });
@@ -82,7 +82,7 @@ io.on('connection', (socket) => {
         const targetGame = games.find(game => game.code === providedCode);
         if (!targetGame) {
             socket.emit('game:not_found', {
-                message: 'Couldn\'t find the game with the provided code.'
+                message: 'ルームが見つかりません'
             });
             return;
         }
@@ -115,16 +115,16 @@ io.on('connection', (socket) => {
             const result = game.getGameResult();
             if (!result.win) {
                 io.in(code).emit('game:result', {
-                    result: 'Draw!',
+                    result: '引き分け!',
                     hasWon: false,
                 });
             } else {
                 io.to(result.win).emit('game:result', {
-                    result: 'You won.',
+                    result: '勝利！！！',
                     hasWon: true,
                 });
                 io.to(result.lose).emit('game:result', {
-                    result: 'You lost.',
+                    result: '敗北...',
                     hasWon: false,
                 });
             }
