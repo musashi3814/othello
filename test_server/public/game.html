@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>オセロゲーム</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/wait.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+</head>
+<body>
+    <!-- スタート画面 -->
+    <div id="start-screen">
+        <!-- スタート画面 - New Game ボタンをクリック -->
+        <div id="choose-screen">
+            <p>選択してください</p>
+            <button class="newgame-btn" onclick="showNewRoom()">ルームを新規作成する</button>
+            <button class="joingame-btn" onclick="showJoinRoom()">ルームに参加する</button>
+        </div>
+
+        <!-- ゲーム画面 - New Room -->
+        <div id="new-room-content" class="game-content">
+            <p>room ID</p>
+            <p id="create-room">0000</p>
+        </div>
+
+        <!-- ゲーム画面 - Join Room -->
+        <div id="join-room-content" class="game-content">
+            <input type="text" id="roomID" placeholder="Room ID">
+            <button class="join-btn">参加する</button>
+        </div>
+
+        <!-- テキスト - 画面の下 -->
+        <div class="txt-container">
+            <p class="txt"></p>
+        </div>
+    </div>
+
+    <script>
+        function showNewRoom() {
+            document.getElementById("choose-screen").style.display = "none";
+            document.getElementById("new-room-content").style.display = "block";
+            document.getElementById("join-room-content").style.display = "none";
+        }
+
+        function showJoinRoom() {
+            document.getElementById("choose-screen").style.display = "none";
+            document.getElementById("new-room-content").style.display = "none";
+            document.getElementById("join-room-content").style.display = "block";
+        }
+    </script>
+
+    <!-- ゲーム画面 (モーダルとして非表示) -->
+    <div id="game-screen" style="display: none;">
+        <div class="field">
+            <div class="yourColor">あなたの色は<span id="yourColor"></span>です</div>
+            <div id="current-turn" class="current-turn"></div>
+            <div id="stage" class="stage"></div>
+            <div id="square-template" class="square">
+                <div class="stone"></div>
+            </div>
+            <button id="pass" class="pass-button">pass</button>
+        </div>
+    </div>
+    <script src="javascripts/main.js"></script>
+</body>
+</html>

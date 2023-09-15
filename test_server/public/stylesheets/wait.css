@@ -1,0 +1,117 @@
+/* style.css */
+html, body {
+    margin: 0;
+    background-color: rgb(77, 77, 76);
+}
+
+/***カーテンのように開くアニメーション***/
+body::before, body::after{
+    content: "";
+    position: fixed; /*固定表示*/
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    background-image: linear-gradient(rgba(181, 181, 181, 0.5), rgba(181, 181, 181, 0.8), rgb(157, 157, 157)),url('start.webp'); /* 背景画像のURLを指定 */
+    background-size: cover;
+    animation: curtainOpen 1s forwards;
+    z-index: 999; /*最前面に*/
+  }
+  body::before{
+    left: 0;
+  }
+  body::after{
+    right: 0;
+  }
+  
+  @keyframes curtainOpen{
+    0%{
+      width: 50vw; /*閉じている状態*/
+    }
+    100%{ 
+      width: 0; /*開く*/
+      visibility: hidden; /*非表示に*/
+    }
+  }
+
+
+/***以下選択画面のCSS***/
+#start-screen {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(77, 77, 76);
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#choose-screen {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 25px;
+    width:70%;
+    max-width: 500px;
+    color:black;
+}
+
+.newgame-btn,
+.joingame-btn,
+.join-btn {
+    display: block;
+    padding: 15px 30px;
+    margin: 10%;
+    width: 80%;
+    max-width:350px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newgame-btn:hover, 
+.joingame-btn:hover,
+.join-btn:hover {
+    background-color: #0056b3;
+    transition: all 0.3s;
+}
+
+
+#roomID {
+    font-size: 18px;
+    font-weight: 50%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.game-content {
+    display: none;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 25px;
+    width:70%;
+    max-width: 500px;
+    font-size:24px ;
+    color:black;
+}
+
+.txt-container {
+    text-align: center;
+}
+
+#create-room {
+    font-size: 48px;
+    color: rgb(45, 137, 19);
+    font-weight: bold;
+}
+
+.txt {
+    font-size: 18px;
+    color: white;
+}

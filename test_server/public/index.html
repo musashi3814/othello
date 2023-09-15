@@ -1,33 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>オセロゲーム</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <link rel="stylesheet" href="stylesheets/start.css">
+    <title>othello game start</title>
 </head>
 <body>
-    <!-- スタート画面 -->
-    <div id="start-screen">
-        <p class="txt">The server is working.</p>
-        <button class="newgame">newgame</button>
-        <input type="text" id="roomID" placeholder="roomID">
-        <button class="joingame">join</button>
+    <div class="container">
+        <h1>OTHELLO GAME</h1>
+        <p>オセロゲームへようこそ</p>
+        <a href="game.html" class="button">ゲームを始める</a>
     </div>
-
-    <!-- ゲーム画面 (モーダルとして非表示) -->
-    <div id="game-screen" style="display: none;">
-        <div class="field">
-            <div class="yourColor">あなたの色は<span id="yourColor"></span>です</div>
-            <div id="current-turn" class="current-turn"></div>
-            <div id="stage" class="stage"></div>
-            <div id="square-template" class="square">
-                <div class="stone"></div>
-            </div>
-            <button id="pass" class="pass-button">pass</button>
-        </div>
-    </div>
-    <script src="javascripts/main.js"></script>
 </body>
 </html>

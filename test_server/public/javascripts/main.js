@@ -7,8 +7,9 @@ socket.on('connect', () => {
     const startScreen = document.getElementById('start-screen');
     const gameScreen = document.getElementById('game-screen');
     const ptext = document.querySelector(".txt");
-    const newgame = document.querySelector(".newgame");
-    const joingame = document.querySelector(".joingame");
+    const newgame = document.querySelector(".newgame-btn");
+    const joingame = document.querySelector(".join-btn");
+    const createroom = document.getElementById('create-room');
 
     console.log('サーバーに接続しました');
     
@@ -24,7 +25,8 @@ socket.on('connect', () => {
     newgame.addEventListener("click", () => {
         socket.emit("new_game");
         socket.on('game:pending',(data) => {
-            ptext.textContent = `${data.message} on [${data.code}] room`;
+            ptext.textContent = data.message;
+            createroom.textContent = data.code;
         });
     });
 
@@ -104,6 +106,7 @@ socket.on('connect', () => {
                 .setAttribute("data-state",data.board[i]);  // 取得した要素をcorrentColorに
             }
             isYourTurn = 2
+            passButton.textContent = "TOPに戻る";
         });
         
         socket.on('game:result', (data) => {
@@ -122,7 +125,6 @@ socket.on('connect', () => {
                 socket.emit('game:turn_skipped');
             } 
             else if (isYourTurn===2){
-                passButton.textContent = "TOPに戻る";
                 window.open('index.html','_self');
             }
         });
