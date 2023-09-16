@@ -2,7 +2,7 @@
 オセロゲーム
 
 
-サーバーサイド:Node.js(Express)
+サーバーサイド：Node.js(Express)
 
 フロントエンド：javascript+CSS+HTML
 
