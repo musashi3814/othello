@@ -135,22 +135,23 @@ io.on('connection', (socket) => {
             return;
         }
 
-
         io.to(game.getOpponentPlayerId()).emit('game:opponent_turn', {
             board: values
         });
 
         const currentPlayerId = game.getCurrentPlayerId(); 
-        socket.once('game:turn_skipped', () => {
-            game.switchCurrentPlayer();
-            notifyTurn();
-        });
         // should wait for event emit from the user
         
         io.to(currentPlayerId).emit('game:your_turn', {
             board: values
         });
     }
+
+    socket.on('game:turn_skipped', () => {
+        const game = games.find(game => game.players.some(p => p.id === id));
+        game.switchCurrentPlayer();
+        notifyTurn();
+    });
 
     socket.on('ready_game', () => {
         notifyTurn();
@@ -176,10 +177,6 @@ io.on('connection', (socket) => {
                 });
             }
             else{
-                socket.off('game:turn_skipped',() => {
-                    game.switchCurrentPlayer();
-                    notifyTurn();
-                });
                 game.switchCurrentPlayer();
                 notifyTurn();
             }
