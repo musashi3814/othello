@@ -48,8 +48,11 @@ socket.on('connect', () => {
         const stage = document.getElementById("stage");
         const squareTemplate = document.getElementById("square-template");
         const yourColor = document.getElementById("yourColor");
-        const currentTurnText = document.getElementById("current-turn");
         const passButton = document.getElementById("pass");
+        const mine = document.querySelector('.mine');
+        const yours = document.querySelector('.yours');
+        const result = document.querySelector('.yourColor');
+
 
         const index = data.order.findIndex((obj) => obj.id === myID);
         if (index===0){
@@ -80,7 +83,8 @@ socket.on('connect', () => {
 
         socket.on('game:opponent_turn', (data) => {
             isYourTurn = 0;
-            currentTurnText.textContent = "相手のターンです";
+            mine.setAttribute("data-state",0);
+            yours.setAttribute("data-state",1);
             for (let i = 0; i < 64; i++) {
                 document
                 .querySelector(`[data-index='${i}']`)   // data-index=indexの要素を取得
@@ -90,7 +94,8 @@ socket.on('connect', () => {
         
         socket.on('game:your_turn', (data) => {
             isYourTurn = 1;
-            currentTurnText.textContent = "あなたのターンです";
+            mine.setAttribute("data-state",1);
+            yours.setAttribute("data-state",0);         
             for (let i = 0; i < 64; i++) {
                 document
                 .querySelector(`[data-index='${i}']`)   // data-index=indexの要素を取得
@@ -110,7 +115,7 @@ socket.on('connect', () => {
         });
         
         socket.on('game:result', (data) => {
-            currentTurnText.textContent=data.result;
+            result.textContent=data.result;
             data.hasWon;
         });
 

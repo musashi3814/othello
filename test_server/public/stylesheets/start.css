@@ -1,126 +1,48 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    margin: 0;
-    background-color: rgb(77, 77, 76);
-  }
-  
-  #start-screen {
-    color:white;
-  }
-  
-  .field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-  }
-  
-  .yourColor {
-    color:white;
-    font-size: 20px;
-    padding: 10px 0;
-    width: 404px;
-    text-align: center;
-  } 
-  
-  .yourColor span{
-    color:rgb(247, 145, 73);
-    font-weight: bold;
-    font-size: larger;
-  }
-  
-  .current-turn {
-    color:#0066a6;
-    font-weight: bold;
-    background-color: #c0c0c0e2;
-    font-size: 20px;
-    padding: 10px 0;
-    width: 404px;
-    text-align: center;
-    border-radius: 10px;
-    border: 1px solid black;
-  } 
-  
-  
-  .stage {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 60px;
-    width: 404px;
-    height: 404px;
-    background-color: #019b01;
-  }
-  
-  .square {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border: solid black;
-    border-width: 0 4px 4px 0;
-    cursor: pointer;;
-  }
-  
-  .square:nth-child(-n + 8) {
-    border-width: 4px 4px 4px 0;
-    height: 54px;
-  }
-  
-  .square:nth-child(8n + 1) {
-    border-width: 0 4px 4px 4px;
-    width: 54px;
-  }
-  
-  .square:first-child {
-    border-width: 4px;
-    width: 54px;
-    height: 54px;
-  }
-  
-  .stone {
-    position: absolute;
-    top: 2px;
-    bottom: 0;
-    left: 2px;
-    width: 42px;
-    height: 42px;
-    border-radius: 21px;
-  }
-  
-  .stone[data-state="0"] {
-    display: none;
-  }
-  
-  .stone[data-state="1"] {
-    background-color: black;
-  }
-  
-  .stone[data-state="2"] {
-    background-color: white;
-  }
-  
-  .pass-button{
-    background: #0281d0;
-    margin: 20px;
-    width: 200px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 10px 30px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .pass-button:hover {
-    background-color: #006ccb;
-  }
-  
-  
-  #square-template {
-    display: none;
-  } 
+body {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(rgba(181, 181, 181, 0.5), rgba(181, 181, 181, 0.8), rgb(157, 157, 157)),url('start.webp'); /* 背景画像のURLを指定 */
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  height: 100vh;   /*画面の高さいっぱいに背景(body)を表示 */
+  display: flex;   /*以下2つを使うため */
+  align-items: center;
+  justify-content: center;
+  color:white;
+
+}
+
+.container {
+  text-align: center;
+  background-color: rgba(64, 64, 64, 0.9); /* 背景色の透明度を調整 */
+  width: 70%;
+  max-width: 450px;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 36px;
+  padding:10%
+}
+
+p {
+  font-size: 18px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: #0eb002;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #027713;
+  transition: all 0.3s;
+}

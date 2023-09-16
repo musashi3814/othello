@@ -54,7 +54,10 @@
     <div id="game-screen" style="display: none;">
         <div class="field">
             <div class="yourColor">あなたの色は<span id="yourColor"></span>です</div>
-            <div id="current-turn" class="current-turn"></div>
+            <div id="current-turn" class="current-turn">
+                <div class="yours" data-state="0">相手</div>
+                <div class="mine" data-state="1">あなた</div>
+            </div>
             <div id="stage" class="stage"></div>
             <div id="square-template" class="square">
                 <div class="stone"></div>
